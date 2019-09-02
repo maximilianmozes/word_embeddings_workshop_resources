@@ -1,0 +1,9 @@
+numpy==1.16.1
+scipy
+tensorboard
+tensorboardX
+unidecode
+gensim
+glove_python
+torch
+wget
