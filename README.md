@@ -7,6 +7,7 @@ All slides used during the workshop will be made available in the `slides` direc
 ## Getting started
 
 ### Requirements
+This repository is based on the [gensim word2vec](https://radimrehurek.com/gensim/models/word2vec.html) and [glove-python](https://github.com/maciejkula/glove-python) libraries. For detailed tutorials on how to use word embeddings in Python, see [here](https://towardsdatascience.com/a-beginners-guide-to-word-embedding-with-gensim-word2vec-model-5970fa56cc92) (word2vec with gensim) and [here](https://medium.com/analytics-vidhya/word-vectorization-using-glove-76919685ee0b) (Glove with glove-python). 
 
 The code runs on `Python 2.7.12`. You will need to use `pip` to install all required packages. We highly recommend to use a `virtualenv` for your setup. See [https://pypi.org/project/virtualenv/](https://pypi.org/project/virtualenv/) for how to install `virtualenv` on your machine or simply run `pip install virtualenv`. You can then create a new virtual environment with
 
@@ -36,7 +37,7 @@ $ deactivate
 
 ### Data: pre-trained embeddings
 
-Download the pre-trained GloVe and word2vec word embeddings with the following commands:
+Download the pre-trained Glove and word2vec word embeddings with the following commands:
 
 ```
 $ cd data
@@ -70,7 +71,7 @@ You can visualise pre-trained word embeddings using TensorBoard via the `tensorb
 
 ## Running pre-trained examples
 
-We furthermore provide code to execute a few examples using the pre-trained word2vec and GloVe embeddings. Run
+We furthermore provide code to execute a few examples using the pre-trained word2vec and Glove embeddings. Run
 
 ```
 $ cd code
@@ -83,9 +84,9 @@ to load the pre-trained embeddings and compute cosine distances between specific
 
 Finally, you can train your own vector space models in Python using the code provided in this repository.
 
-### Train a GloVe model
+### Train a Glove model
 
-To train your own GloVe model, we use the `glove_python` software package. The code to train your model and load a pre-trained model can be found in `code/train_glove.py`. Here you can specify whether you would like to train a new model (set `mode="train"`) or load an existing model (`mode="load"`). Note that for the latter, you have to specify the path to your pre-trained model via the `load_path` variable. You can train a model using
+To train your own Glove model, we use the `glove_python` software package. The code to train your model and load a pre-trained model can be found in `code/train_glove.py`. Here you can specify whether you would like to train a new model (set `mode="train"`) or load an existing model (`mode="load"`). Note that for the latter, you have to specify the path to your pre-trained model via the `load_path` variable. You can train a model using
 
 ```
 $ cd code
@@ -96,7 +97,7 @@ The trained model will be saved under `models/glove/glove_model_[DATE_TIME]` and
 
 ### Train a word2vec model
 
-You can train your own word2vec model in a similar way as the GloVe. To train a word2vec model, we make use of the `gensim`software package. The code for training a word2vec model can be found in `code/train_word2ve.py`. After specifying your parameters, run 
+You can train your own word2vec model in a similar way as the Glove. To train a word2vec model, we make use of the `gensim`software package. The code for training a word2vec model can be found in `code/train_word2ve.py`. After specifying your parameters, run 
 
 ```
 $ cd code

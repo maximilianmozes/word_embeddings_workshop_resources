@@ -19,7 +19,7 @@ def cosine_sim(v1, v2):
 
 def load_model(model_path):
     """
-    Returns loaded Word2vec model.
+    Returns loaded Glove model.
 
     :param model_path: path to trained model
     :return: loaded model
@@ -36,12 +36,12 @@ def train_glove(data,
                 workers=1,
                 alpha=0.75,
                 max_count=100,
-                learning_rate=0.01,
+                learning_rate=0.05,
                 ):
     """
-    Trains a GloVe model.
+    Trains a Glove model.
 
-    :param data: input texts (list of list of words)
+    :param data: input texts (list of lists of words)
     :param save_path: path to save trained model to
     :param model_name: name of your model (default 'my_model')
     :param num_epoch: number of epochs to train model for (default 10)
@@ -50,10 +50,10 @@ def train_glove(data,
     :param workers: number of workers to train your model (default 1)
     :param alpha: alpha value for weighting function (default 0.75)
     :param max_count: x_max value for weighting function (default 100)
-    :param learning_rate: leaning rate to train the model (default 0.01)
-    :return: trained GloVe model
+    :param learning_rate: leaning rate to train the model (default 0.05)
+    :return: trained Glove model
     """
-    print("Train GloVe model '{}'".format(model_name))
+    print("Train Glove model '{}'".format(model_name))
 
     my_corpus = Corpus()
     my_corpus.fit(data, window=window_size)
@@ -62,7 +62,7 @@ def train_glove(data,
     glove.fit(my_corpus.matrix, epochs=num_epoch, no_threads=workers, verbose=False)
     glove.add_dictionary(my_corpus.dictionary)
 
-    print("Save GloVe model '{}' at {}".format(model_name, save_path))
+    print("Save Glove model '{}' at {}".format(model_name, save_path))
     glove.save("{}/{}.model".format(save_path, model_name))
 
     return glove
@@ -93,4 +93,4 @@ if __name__ == "__main__":
     v_1 = glove_model.word_vectors[glove_model.dictionary[w_1]]
     v_2 = glove_model.word_vectors[glove_model.dictionary[w_2]]
 
-    print("Cosine distance between '{}' and '{}': {}".format(w_1, w_2, cosine_sim(v_1, v_2)))
+    print("Cosine similarity between '{}' and '{}': {}".format(w_1, w_2, cosine_sim(v_1, v_2)))

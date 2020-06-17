@@ -10,14 +10,13 @@ from unidecode import unidecode
 
 def load_word2vec(limit=-1):
     """
-    Returns an embedding matrix of pre-trained word2vec word vectors together with two word-index association
-    mappings.
+    Returns an embedding matrix of pre-trained word2vec word vectors together with an indexed list of words.
 
     :param limit: number of embeddings to load into memory (default=-1 -> no limit)
     :return embeddings: embedding matrix of shape (N, D)
     :return tokens: list of words in indexed order
     """
-    print("Loading word2vec Model")
+    print("Loading word2vec model")
 
     path = "../data/GoogleNews-vectors-negative300.bin"
     w2v_model = KeyedVectors.load_word2vec_format(path, binary=True)
@@ -36,14 +35,15 @@ def load_word2vec(limit=-1):
 
 def load_glove_raw(limit=-1):
     """
-    Returns an embedding matrix of pre-trained GloVe word vectors together with two word-index association
-    mappings.
+    Parts adapted from https://github.com/nesl/nlp_adversarial_examples/.
+
+    Returns an embedding matrix of pre-trained Glove word vectors together with an indexed list of words.
 
     :param limit: number of embeddings to load into memory (default=-1 -> no limit)
     :return embeddings: embedding matrix of shape (N, D)
     :return tokens: list of words in indexed order
     """
-    print("Loading Glove Model")
+    print("Loading Glove model")
 
     path = "../data/glove.840B.300d.txt"
     data = open(path, 'r')
